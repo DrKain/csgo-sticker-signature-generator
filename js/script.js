@@ -91,10 +91,20 @@ el("custom-background").addEventListener("change", readImage, false);
 $("#custom-background").click(function() {
     $(this).val("");
 });
-$("#custom-background").change(function() {
-    if ((this.files[0].size / 1024).toFixed(0) > 1024) {
-        alert("File too big!\nYour file: " + (this.files[0].size / 1024).toFixed(0) + "kb\nMax Allowed: 1024kb\nLarge files will cause lag on the page\nPlease resize and try again");
-        $(this).val("");
+
+var _URL = window.URL || window.webkitURL;
+$("#custom-background").change(function(e) {
+    var file, img;
+    if ((file = this.files[0])) {
+        img = new Image();
+        img.onload = function () {
+            if(this.width > 288 || this.height > 288){
+                $("#custom-background").val("");
+                customBackgroundSource = "images/nobg.png";
+                alert("File too big! Max size: 288x288");
+            }
+        };
+        img.src = _URL.createObjectURL(file);
     }
 });
 
