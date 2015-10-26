@@ -36,9 +36,8 @@ setInterval(function() {
     $("#color").val(s.toHexString());
     $("#color-preview").css("background", $("#color").val());
     $("#changesticker").text("Change sticker (" + stickertype + ")");
-    if ($("#custom-background").val() != "") {
-        customBackgroundImage.src = customBackgroundSource;
-    }
+    if ($("#custom-background").val() != "") {customBackgroundImage.src = customBackgroundSource;}
+	if(customBackgroundSource != "images/nobg.png"){$("clearbg").show();}
 }, 1);
 
 $("#random").click(function() {
@@ -93,4 +92,4 @@ $("#custom-background").change(function() {
     }
 });
 
-$("#clearbg").click(function(){customBackgroundSource = "images/nobg.png";});
+$("#clearbg").click(function(){customBackgroundSource = "images/nobg.png";$(this).fadeOut();});
