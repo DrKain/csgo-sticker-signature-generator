@@ -92,3 +92,5 @@ $("#custom-background").change(function() {
         $(this).val("");
     }
 });
+
+$("#clearbg").click(function(){customBackgroundSource = "images/nobg.png";});
