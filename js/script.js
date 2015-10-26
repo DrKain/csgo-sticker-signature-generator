@@ -3,19 +3,28 @@ var stickertype = "dreamhack";
 var w = c.width = 228;
 var h = c.height = 226;
 var ctx = c.getContext('2d');
+
 var backgroundImage = new Image();
-backgroundImage.setAttribute('crossOrigin', 'anonymous');
+var customBackgroundImage = new Image();
+var customBackgroundSource = "images/_nobg.png";
+
+/*
 backgroundImage.onload = function() {
+    DrawCustomBackground();
     DrawScreen();
     DrawText();
 };
+*/
 
 backgroundImage.src = $("#" + stickertype + "-team").val();
+customBackgroundImage.src = customBackgroundSource;
+
+function DrawCustomBackground() {
+    ctx.drawImage(customBackgroundImage, 0, 0, w, h);
+}
 
 function DrawScreen() {
-    var pattern = ctx.createPattern(backgroundImage, 'no-repeat');
-    ctx.fillStyle = pattern;
-    ctx.fillRect(0, 0, c.width, c.height);
+    ctx.drawImage(backgroundImage, 0, 0, w, h);
 }
 
 function DrawText() {
@@ -27,14 +36,17 @@ function DrawText() {
 }
 
 setInterval(function() {
+    DrawCustomBackground();
     DrawScreen();
     DrawText();
-    backgroundImage.setAttribute('crossOrigin', 'anonymous');
     backgroundImage.src = $("#" + stickertype + "-team").val();
     var s = $("#color-pick").spectrum("get");
     $("#color").val(s.toHexString());
     $("#color-preview").css("background", $("#color").val());
     $("#changesticker").text("Change sticker (" + stickertype + ")");
+    if ($("#custom-background").val() != "") {
+        customBackgroundImage.src = customBackgroundSource;
+    }
 }, 1);
 
 $("#random").click(function() {
@@ -63,4 +75,28 @@ $("#download").click(function() {
 
 $("#color-pick").spectrum({
     color: "#FFFFFF"
+});
+
+function el(id) {
+    return document.getElementById(id);
+}
+
+function readImage() {
+    if (this.files && this.files[0]) {
+        var FR = new FileReader();
+        FR.onload = function(e) {
+            customBackgroundSource = e.target.result;
+        };
+        FR.readAsDataURL(this.files[0]);
+    }
+};
+el("custom-background").addEventListener("change", readImage, false);
+$("#custom-background").click(function() {
+    $(this).val("");
+});
+$("#custom-background").change(function() {
+    if ((this.files[0].size / 1024).toFixed(0) > 1024) {
+        alert("File too big!\nYour file: " + (this.files[0].size / 1024).toFixed(0) + "kb\nMax Allowed: 1024kb\nLarge files will cause lag on the page\nPlease resize and try again");
+        $(this).val("");
+    }
 });
