@@ -124,13 +124,14 @@ li {
 #dreamhack-team,
 #font,
 #upload,
-#bgbutton{
+#bgbutton,
+#clearbg{
     width: 228px;
 }
-#bgbutton{
+#bgbutton,
+#upload,
+#clearbg{
     border-color: white;
-}
-#upload{
     border-color: white;
 }
 #changesticker {
