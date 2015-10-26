@@ -3,11 +3,6 @@
 @import url(https://fonts.googleapis.com/css?family=Indie+Flower|Shadows+Into+Light|Pacifico|Dancing+Script|Shadows+Into+Light+Two|Coming+Soon|Handlee|Cookie|Tangerine|Great+Vibes|Damion|Patrick+Hand|Bad+Script|Calligraffitti|Waiting+for+the+Sunrise|Reenie+Beanie|Nothing+You+Could+Do|Sacramento|Crafty+Girls|Allura|Kalam|Yellowtail|Italianno|Give+You+Glory|Dawning+of+a+New+Day|League+Script|Ruthie|Lovers+Quarrel|Mrs+Saint+Delafield|Mrs+Sheppards|Meie+Script|Princess+Sofia|Caveat|Iceland);
 /* MAIN SHIT */
 
-.fuck{
-    font-size: 10pt;
-    border: solid thin red;
-}
-
 body,
 html {
     font-size: 12pt;
@@ -17,6 +12,10 @@ html {
     padding: 0;
     width: 100%;
     margin-bottom: 2em;
+}
+
+.hidden{
+    display: none;
 }
 
 a {
@@ -123,10 +122,17 @@ li {
 #changesticker,
 #cologne-team,
 #dreamhack-team,
-#font {
+#font,
+#upload,
+#bgbutton{
     width: 228px;
 }
-
+#bgbutton{
+    border-color: white;
+}
+#upload{
+    border-color: white;
+}
 #changesticker {
     border-color: white;
 }

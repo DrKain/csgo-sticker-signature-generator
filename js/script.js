@@ -8,14 +8,6 @@ var backgroundImage = new Image();
 var customBackgroundImage = new Image();
 var customBackgroundSource = "images/nobg.png";
 
-/*
-backgroundImage.onload = function() {
-    DrawCustomBackground();
-    DrawScreen();
-    DrawText();
-};
-*/
-
 backgroundImage.src = $("#" + stickertype + "-team").val();
 customBackgroundImage.src = customBackgroundSource;
 
