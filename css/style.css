@@ -12,6 +12,8 @@ html {
     padding: 0;
     width: 100%;
     margin-bottom: 2em;
+	background-image: url('images/bg.jpg')
+	background-size: cover;
 }
 
 .hidden{
