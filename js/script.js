@@ -31,8 +31,8 @@ setInterval(function() {
     DrawText();
     backgroundImage.setAttribute('crossOrigin', 'anonymous');
     backgroundImage.src = $("#" + stickertype + "-team").val();
-    //var s = $("#color-pick").spectrum("get");
-    //$("#color").val(s.toHexString());
+    var s = $("#color-pick").spectrum("get");
+    $("#color").val(s.toHexString());
     $("#color-preview").css("background", $("#color").val());
     $("#changesticker").text("Change sticker (" + stickertype + ")");
 }, 1);
@@ -60,8 +60,7 @@ $("#download").click(function() {
     $("#download").attr("download", "DreamhackSignature.png");
     $("#download").attr("href", url);
 });
-/*
+
 $("#color-pick").spectrum({
     color: "#FFFFFF"
 });
-*/
