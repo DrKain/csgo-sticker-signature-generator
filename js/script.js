@@ -6,7 +6,7 @@ var ctx = c.getContext('2d');
 
 var backgroundImage = new Image();
 var customBackgroundImage = new Image();
-var customBackgroundSource = "images/_nobg.png";
+var customBackgroundSource = "images/nobg.png";
 
 /*
 backgroundImage.onload = function() {
