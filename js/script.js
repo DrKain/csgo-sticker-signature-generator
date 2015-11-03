@@ -20,11 +20,17 @@ function DrawScreen() {
 }
 
 function DrawText() {
+    ctx.save();
     ctx.fillStyle = $("#color").val();
     var textString = $('#name').val();
     var textWidth = ctx.measureText(textString).width;
+    var translateX = w * (1 - $("#width").val());
+    var translateY = h * (1 - $("#height").val());
     ctx.font = $("#fontsize").val() + 'px ' + $("#font").val();
-    ctx.fillText(textString, (w / $("#width").val()) - (textWidth / 2), (h / $("#height").val()));
+    ctx.translate(translateX, translateY);
+    ctx.rotate($('#rotation').val() * Math.PI / 180);
+    ctx.fillText(textString, -ctx.measureText(textString).width / 2, $("#fontsize").val() / 4);
+    ctx.restore();
 }
 
 setInterval(function() {
