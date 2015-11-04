@@ -156,25 +156,24 @@ li {
     width: 60px;
 }
 
-#height {
+#rotation {
+    width: 230px;
+}
+
+#height, #width {
     width: 230px;
     -ms-transform: rotate(-90deg);
     -webkit-transform: rotate(-90deg);
     transform: rotate(-90deg);
     position: absolute;
     width: 226px;
-    top: 127px;
+    top: 152px;
+}
+#height {
     left: 160px;
 }
 
 #width {
-    width: 230px;
-    -ms-transform: rotate(-90deg);
-    -webkit-transform: rotate(-90deg);
-    transform: rotate(-90deg);
-    position: absolute;
-    width: 226px;
-    top: 127px;
     left: -100px;
 }
 
