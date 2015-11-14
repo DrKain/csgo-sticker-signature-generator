@@ -16,7 +16,9 @@ function DrawCustomBackground() {
 }
 
 function DrawScreen() {
-    ctx.drawImage(backgroundImage, 0, 0, w, h);
+    if (backgroundImage.complete && backgroundImage.width > 0 && backgroundImage.height > 0) {
+        ctx.drawImage(backgroundImage, 0, 0, w, h);
+    }
 }
 
 function DrawText() {
