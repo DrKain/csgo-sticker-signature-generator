@@ -12,6 +12,12 @@ var customBackgroundSource = "images/nobg.png";
 backgroundImage.src = $("#" + stickertype[stickerIndex] + "-team").val();
 customBackgroundImage.src = customBackgroundSource;
 
+$("#dreamhack-team").hide();
+$("#cologne-team").hide();
+$("#comedy-team").hide();
+$("#custom-team").hide();
+$("#" + stickertype[stickerIndex] + "-team").show();
+    
 function DrawCustomBackground() {
     ctx.drawImage(customBackgroundImage, 0, 0, w, h);
 }
@@ -69,7 +75,7 @@ $("#changesticker").click(function() {
     $("#cologne-team").hide();
     $("#comedy-team").hide();
     $("#custom-team").hide();
-    $("#" + stickertype[stickerIndex] + "-team").hide();
+    $("#" + stickertype[stickerIndex] + "-team").show();
 
 });
 
