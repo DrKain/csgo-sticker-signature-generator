@@ -103,7 +103,6 @@ li {
     width: 288px;
     text-align: center;
     background-color: white;
-    padding-top: 1.7em;
     padding-bottom: 1.7em;
 }
 /* MISC */
@@ -169,7 +168,7 @@ li {
     transform: rotate(-90deg);
     position: absolute;
     width: 226px;
-    top: 152px;
+    top: 130px;
 }
 #height {
     left: 160px;
