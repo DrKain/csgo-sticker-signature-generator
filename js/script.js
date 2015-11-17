@@ -1,5 +1,6 @@
 var c = document.getElementById('canvas');
-var stickertype = "dreamhack";
+var stickertype = ['dreamhack','cologne','comedy','custom'];
+var stickerIndex = 0;
 var w = c.width = 228;
 var h = c.height = 226;
 var ctx = c.getContext('2d');
@@ -8,7 +9,7 @@ var backgroundImage = new Image();
 var customBackgroundImage = new Image();
 var customBackgroundSource = "images/nobg.png";
 
-backgroundImage.src = $("#" + stickertype + "-team").val();
+backgroundImage.src = $("#" + stickertype[stickerIndex] + "-team").val();
 customBackgroundImage.src = customBackgroundSource;
 
 function DrawCustomBackground() {
@@ -39,11 +40,11 @@ setInterval(function() {
     DrawCustomBackground();
     DrawScreen();
     DrawText();
-    backgroundImage.src = $("#" + stickertype + "-team").val();
+    backgroundImage.src = $("#" + stickertype[stickerIndex] + "-team").val();
     var s = $("#color-pick").spectrum("get");
     $("#color").val(s.toHexString());
     $("#color-preview").css("background", $("#color").val());
-    $("#changesticker").text("Change sticker (" + stickertype + ")");
+    $("#changesticker").text("Change sticker (" + stickertype[stickerIndex] + ")");
     if ($("#custom-background").val() != "") {customBackgroundImage.src = customBackgroundSource;}
 	if(customBackgroundSource != "images/nobg.png"){
         $("#clearbg").show();
@@ -59,15 +60,17 @@ $("#random").click(function() {
 });
 
 $("#changesticker").click(function() {
-    if (stickertype == "dreamhack") {
-        stickertype = "cologne";
-        $("#cologne-team").show();
-        $("#dreamhack-team").hide();
-    } else {
-        stickertype = "dreamhack";
-        $("#cologne-team").hide();
-        $("#dreamhack-team").show();
-    }
+    if(stickerIndex >= stickertype.length-1){
+		stickerIndex = 0;
+	} else {
+		stickerIndex++;
+	}
+    $("#dreamhack-team").hide();
+    $("#cologne-team").hide();
+    $("#comedy-team").hide();
+    $("#custom-team").hide();
+    $("#" + stickertype[stickerIndex] + "-team").hide();
+
 });
 
 $("#download").click(function() {
