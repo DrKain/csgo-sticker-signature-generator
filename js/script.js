@@ -1,3 +1,6 @@
+/* IE checker for on("input") */
+var is_ie = !!navigator.userAgent.match(/(?:MSIE |Trident\/.*; rv:)(\d+)/);
+
 /* data */
 var stickertype = ['dreamhack','cologne','comedy','custom'];
 var stickerIndex = 0;
@@ -91,6 +94,9 @@ function updateCanvas() {
 
 // handle general changes (sliders, text input)
 $update_canvas_input.on("input", updateCanvas);
+if (is_ie) {
+    $update_canvas_input.on("change", updateCanvas);
+}
 $update_canvas_change.on("change", updateCanvas);
 
 // handle color based changes
