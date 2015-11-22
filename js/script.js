@@ -16,7 +16,8 @@ var nobg_url = location.origin + location.pathname + "images/nobg.png";
 WebFont.load({
     google: {
         families: fonts
-    }
+    },
+    active: updateCanvas
 });
 
 /* element preloading */
