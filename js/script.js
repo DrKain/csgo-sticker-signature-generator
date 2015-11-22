@@ -1,128 +1,165 @@
-var c = document.getElementById('canvas');
+/* data */
 var stickertype = ['dreamhack','cologne','comedy','custom'];
 var stickerIndex = 0;
-var w = c.width = 228;
-var h = c.height = 226;
-var ctx = c.getContext('2d');
+var fonts = ["Indie Flower", "Shadows Into Light", "Pacifico", "Dancing Script",
+             "Shadows Into Light Two", "Coming Soon", "Handlee", "Cookie",
+             "Tangerine", "Great Vibes", "Damion", "Patrick Hand", "Bad Script",
+             "Calligraffitti", "Waiting for the Sunrise", "Reenie Beanie",
+             "Nothing You Could Do", "Sacramento", "Crafty Girls", "Allura",
+             "Kalam", "Yellowtail", "Italianno", "Give You Glory",
+             "Dawning of a New Day", "League Script", "Ruthie",
+             "Lovers Quarrel", "Mrs Saint Delafield", "Mrs Sheppards",
+             "Meie Script", "Princess Sofia", "Caveat", "Iceland"];
+var nobg_url = location.origin + location.pathname + "images/nobg.png";
 
+/* font preloading */
+WebFont.load({
+    google: {
+        families: fonts
+    }
+});
+
+/* element preloading */
+var $bgbutton = $("#bgbutton");
+var $changetype = $("#changetype");
+var $clearbg = $("#clearbg");
+var $color = $("#color");
+var $color_pick = $("#color-pick");
+var $color_preview = $("#color_preview");
+var $custom_background = $("#custom-background");
+var $download = $("#download");
+var $font = $("#font");
+var $fontsize = $("#fontsize");
+var $height = $("#height");
+var $name = $("#name");
+var $random = $("#random");
+var $rotation = $("#rotation");
+var $sticker_select = $(".sticker-select");
+var $teams = {};
+var $update_canvas_change = $("select.update-canvas");
+var $update_canvas_input = $("input.update-canvas");
+var $width = $("#width");
+
+// preload team selects based on stickertype array
+for (var i = 0; i < stickertype.length; i++) {
+    $teams[stickertype[i]] = $("#" + stickertype[i] + "-team");
+    if (i != stickerIndex) {
+        // hide all but current list
+        $teams[stickertype[i]].hide();
+    }
+}
+
+// hide clear background button
+$clearbg.hide();
+
+var $canvas = $("#canvas")[0];
+var w = $canvas.width = 228;
+var h = $canvas.height = 226;
+var $context = $canvas.getContext('2d');
+
+/* image objects */
+var stickerImage = new Image();
+stickerImage.src = $teams[stickertype[stickerIndex]].val();
 var backgroundImage = new Image();
-var customBackgroundImage = new Image();
-var customBackgroundSource = "images/nobg.png";
+backgroundImage.src = nobg_url;
 
-backgroundImage.src = $("#" + stickertype[stickerIndex] + "-team").val();
-customBackgroundImage.src = customBackgroundSource;
-
-$("#dreamhack-team").hide();
-$("#cologne-team").hide();
-$("#comedy-team").hide();
-$("#custom-team").hide();
-$("#" + stickertype[stickerIndex] + "-team").show();
-    
-function DrawCustomBackground() {
-    ctx.drawImage(customBackgroundImage, 0, 0, w, h);
-}
-
-function DrawScreen() {
-    if (backgroundImage.complete && backgroundImage.width > 0 && backgroundImage.height > 0) {
-        ctx.drawImage(backgroundImage, 0, 0, w, h);
+/* main code */
+function drawImageToContext(img) {
+    if (img.complete && img.width > 0 && img.height > 0) {
+        $context.drawImage(img, 0, 0, w, h);
     }
 }
 
-function DrawText() {
-    ctx.save();
-    ctx.fillStyle = $("#color").val();
-    var textString = $('#name').val();
-    var textWidth = ctx.measureText(textString).width;
-    var translateX = w * (1 - $("#width").val());
-    var translateY = h * (1 - $("#height").val());
-    ctx.font = $("#fontsize").val() + 'px ' + $("#font").val();
-    ctx.translate(translateX, translateY);
-    ctx.rotate($('#rotation').val() * Math.PI / 180);
-    ctx.fillText(textString, -ctx.measureText(textString).width / 2, $("#fontsize").val() / 4);
-    ctx.restore();
+function updateCanvas() {
+    var color = $color_pick.spectrum("get").toHexString().toUpperCase();
+    $color.val(color);
+    $color_preview.css("background", color);
+
+    drawImageToContext(backgroundImage);
+    drawImageToContext(stickerImage);
+
+    var textString = $name.val();
+    $context.save();
+    $context.fillStyle = $color.val();
+    $context.font = $fontsize.val() + "px " + $font.val();
+    $context.translate(w * (1 - $width.val()), h * (1 - $height.val()));
+    $context.rotate($rotation.val() * Math.PI / 180);
+    $context.fillText(textString, -$context.measureText(textString).width / 2, $fontsize.val() / 4);
+    $context.restore();
 }
 
-setInterval(function() {
-    DrawCustomBackground();
-    DrawScreen();
-    DrawText();
-    backgroundImage.src = $("#" + stickertype[stickerIndex] + "-team").val();
-    var s = $("#color-pick").spectrum("get");
-    $("#color").val(s.toHexString());
-    $("#color-preview").css("background", $("#color").val());
-    $("#changesticker").text("Change sticker (" + stickertype[stickerIndex] + ")");
-    if ($("#custom-background").val() != "") {customBackgroundImage.src = customBackgroundSource;}
-	if(customBackgroundSource != "images/nobg.png"){
-        $("#clearbg").show();
-        $("#bgbutton").hide();
-    } else {
-        $("#clearbg").hide();
-        $("#bgbutton").show();
-    }
-}, 1);
+// handle general changes (sliders, text input)
+$update_canvas_input.on("input", updateCanvas);
+$update_canvas_change.on("change", updateCanvas);
 
-$("#random").click(function() {
-    $("#color-pick").spectrum("set", "#" + Math.random().toString(16).slice(2, 8));
+// handle color based changes
+$color_pick.spectrum({
+    color: "#FFFFFF",
+    move: updateCanvas
 });
 
-$("#changesticker").click(function() {
-    if(stickerIndex >= stickertype.length-1){
-		stickerIndex = 0;
-	} else {
-		stickerIndex++;
-	}
-    $("#dreamhack-team").hide();
-    $("#cologne-team").hide();
-    $("#comedy-team").hide();
-    $("#custom-team").hide();
-    $("#" + stickertype[stickerIndex] + "-team").show();
-
+$random.on("click", function(e) {
+    $color_pick.spectrum("set", "#" + (Math.random()*0xFFFFFF<<0).toString(16));
+    updateCanvas();
 });
 
-$("#download").click(function() {
-    var myCanvas = $(document).find('#canvas');
-    var img = myCanvas.get(0).toDataURL();
-    var url = img.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
-    $("#download").attr("download", "DreamhackSignature.png");
-    $("#download").attr("href", url);
+// handle background based changes
+$bgbutton.on("click", function(e) {
+    $custom_background.val("");
+    $custom_background.click();
 });
 
-$("#color-pick").spectrum({
-    color: "#FFFFFF"
-});
-
-function el(id) {
-    return document.getElementById(id);
-}
-
-function readImage() {
-    if (this.files && this.files[0]) {
-        var FR = new FileReader();
-        FR.onload = function(e) {
-            customBackgroundSource = e.target.result;
-        };
-        FR.readAsDataURL(this.files[0]);
-    }
-};
-el("custom-background").addEventListener("change", readImage, false);
-$("#custom-background").click(function() {
-    $(this).val("");
-});
-
-var _URL = window.URL || window.webkitURL;
-$("#custom-background").change(function(e) {
-    var file, img;
+$custom_background.on("change", function(e) {
+    var file;
     if ((file = this.files[0])) {
-        img = new Image();
-        img.onload = function () {
-            if(this.width > 288 || this.height > 288){
-                $("#custom-background").val("");
-                customBackgroundSource = "images/nobg.png";
+        var img = new Image();
+        img.onload = function() {
+            if (this.width > 288 || this.height > 288){
+                $clearbg.click();
                 alert("File too big! Max size: 288x288");
+            } else {
+                backgroundImage.src = (window.URL || window.webkitURL).createObjectURL(file);
+                $clearbg.show();
+                $bgbutton.hide();
             }
+            backgroundImage.onload = updateCanvas;
         };
-        img.src = _URL.createObjectURL(file);
+        img.src = (window.URL || window.webkitURL).createObjectURL(file);
     }
 });
 
-$("#clearbg").click(function(){customBackgroundSource = "images/nobg.png";});
+$clearbg.on("click", function(e) {
+    backgroundImage.src = nobg_url;
+    $custom_background.val("");
+    $clearbg.hide();
+    $bgbutton.show();
+});
+
+// handle sticker based changes
+$sticker_select.on("change", function(e) {
+    stickerImage.src = $teams[stickertype[stickerIndex]].val();
+    stickerImage.onload = updateCanvas;
+});
+
+$changetype.on("click", function(e) {
+    stickerIndex = (stickerIndex + 1) % stickertype.length;
+    $changetype.text("Change type (" + stickertype[stickerIndex] + ")");
+
+    for (var i = 0; i < stickertype.length; i++) {
+        if (i != stickerIndex) {
+            $teams[stickertype[i]].hide();
+        } else {
+            $teams[stickertype[i]].show();
+        }
+    }
+
+    $sticker_select.change();
+});
+
+$download.on("click", function(e) {
+    $download.attr("download", "DreamhackSignature.png");
+    $download.attr("href", $canvas.toDataURL().replace(/^data:image\/[^;]/, 'data:application/octet-stream'));
+});
+
+/* initial call to draw canvas on page load */
+setTimeout(updateCanvas, 100);
