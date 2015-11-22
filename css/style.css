@@ -206,10 +206,6 @@ input[type=text] {
     line-height: 1.3em;
     padding: 8px 17px;
     vertical-align: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
     outline: none;
     border: 1px solid transparent;
     border-color: #CCC;
