@@ -1,55 +1,56 @@
 <!DOCTYPE html>
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>CSGO sticker signature generator</title>
-	<!-- SCRIPTS AND STYLES -->
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link href="css/spectrum.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="js/spectrum.js"></script>
+    <!-- SCRIPTS AND STYLES -->
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/spectrum.css" rel="stylesheet" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script src="js/spectrum.js"></script>
 </head>
 
 <body>
-
-    <div id='head'>
-        <h1>Dreamhack Signature Generator<span>v3.7</span></h1>
+    <div id="head">
+        <h1>Dreamhack Signature Generator<span>v3.8</span></h1>
     </div>
 
-    <div id='csgobig'>
+    <div id="csgobig">
         <a href="http://csgobig.com/">
-            <img src="http://tryhardhusky.github.io/csgo-sticker-signature-generator/images/csgobig.png">
+            <img src="images/csgobig.png" alt="CSGOBig" />
         </a>
     </div>
 
-    <div id='wrapper'>
-
-        <div id='canvas-wrap'>
-            <input type="range" id='rotation' min="-180" max="180" value="0" step="1">
+    <div id="wrapper">
+        <div id="canvas-wrap">
+            <input type="range" id="rotation" min="-180" max="180" value="0" step="1" title="Rotation" class="update-canvas" />
             <!-- Top -->
-            <canvas id='canvas'></canvas>
+            <canvas id="canvas"></canvas>
             <!-- Canvas -->
-            <input type="range" id='height' min=".45" max=".9" value=".65" step="0.01">
+            <input type="range" id="height" min="0.45" max="0.9" value="0.65" step="0.01" title="Y Axis" class="update-canvas" />
             <!-- Right -->
-            <input type="range" id='width' min=".2" max=".8" value=".5" step="0.01">
+            <input type="range" id="width" min="0.2" max="0.8" value="0.5" step="0.01" title="X Axis" class="update-canvas" />
             <!-- Left -->
-            <input type="range" id='fontsize' min="20" max="75" value="41.6" step="0.2">
+            <input type="range" id="fontsize" min="20" max="75" value="41.6" step="0.2" title="Font Size" class="update-canvas" />
             <!-- Bottom -->
         </div>
-        <div id='control'>
-            <div class='form-line'>
-                <button id='changesticker' class='btn btn-default'>Change sticker (cologne)</button>
-                <input type="file" id="custom-background" style="display: none"/>
-                <button id='bgbutton' class='btn btn-success' onClick='$("#custom-background").click();'>Upload Background</button>
-                <button id='clearbg' class='btn btn-warning' >Clear Background</button>
+        <div id="control">
+            <div class="form-line">
+                <button id="changetype" class="btn btn-default">Change type (dreamhack)</button>
+                <input type="file" id="custom-background" style="display: none" />
+                <button id="bgbutton" class="btn btn-success">Upload Background</button>
+                <button id="clearbg" class="btn btn-warning">Clear Background</button>
             </div>
-            <div class='form-line'>
-                <p class='help'>Name</p>
-                <input id='name' type='text' value="Rambo" />
+
+            <div class="form-line">
+                <p class="help">Name</p>
+                <input id="name" type="text" value="Rambo" class="update-canvas" />
             </div>
-            <div class='form-line'>
-                <p class='help'>Team</p>
-                <select id='cologne-team'>
+
+            <div class="form-line">
+                <p class="help">Team</p>
+                <select id="cologne-team" class="sticker-select">
                     <option value="images/cologne15/blank.png">Blank</option>
                     <option value="images/cologne15/clg.png">CLG</option>
                     <option value="images/cologne15/cloud9.png">Cloud9</option>
@@ -70,12 +71,12 @@
                     <option value="images/cologne15/solomid.png">TSM</option>
                     <option value="images/cologne15/virtuspro.png">Virtus.Pro</option>
                 </select>
-				
-                <select id='custom-team'>
+                
+                <select id="custom-team" class="sticker-select">
                     <option value="images/custom/teamyp.png">Teamyp</option>
-				</select>
-				
-                <select id='comedy-team'>
+                </select>
+                
+                <select id="comedy-team" class="sticker-select">
                     <option value="images/comedy/cheetos.png">Cheetos</option>
                     <option value="images/comedy/chipotle.png">Chipotle</option>
                     <option value="images/comedy/doritos.png">Doritos</option>
@@ -87,9 +88,9 @@
                     <option value="images/comedy/pornhub.png">Pornhub</option>
                     <option value="images/comedy/subway.png">Subway</option>
                     <option value="images/comedy/tacobell.png">Tacobell</option>
-				<select>
+                </select>
 
-                <select id='dreamhack-team'>
+                <select id="dreamhack-team" class="sticker-select">
                     <option value="images/dreamhack15/3dmax.png">3DMax</option>
                     <option value="images/dreamhack15/astana-dragons.png">Astana Dragons</option>
                     <option value="images/dreamhack15/blank.png">Blank</option>
@@ -133,9 +134,10 @@
                     <option value="images/dreamhack15/virtuspro.png">Virtus.Pro</option>
                 </select>
             </div>
-            <p class='help'>Font</p>
-            <div class='form-line'>
-                <select id='font'>
+
+            <p class="help">Font</p>
+            <div class="form-line">
+                <select id="font" class="update-canvas">
                     <option value="Indie Flower">Indie Flower</option>
                     <option value="Shadows Into Light">Shadows Into Light</option>
                     <option value="Pacifico">Pacifico</option>
@@ -172,38 +174,44 @@
                     <option value="Comic Sans MS">Comic Sans</option>
                 </select>
             </div>
-            <div class='form-line'>
-                <p class='help'>Color</p>
-                <input type='text' id='color-pick' value=''/>
-                <input type='text' id='color' disabled value='#FFFFFF'/>
-                <button id='random' class='btn btn-default btn-join'>Random</button>
+
+            <div class="form-line">
+                <p class="help">Color</p>
+                <input type="text" id="color-pick" value="" />
+                <input type="text" id="color" disabled value="#FFFFFF" />
+                <button id="random" class="btn btn-default btn-join">Random</button>
             </div>
-            <div class='form-line'>
-                <p class='help'>Download <i>(Browser Only)</i></p>
-                <a id='download' class='btn btn-success btn-wide'>Download</a>
-            </div>
-            <hr />
-            <div class='form-line'>
-                <p class='donate'>A lot of work was put into this, It's 100% free. If you really want to, You can Donate a skin or two as thanks!</p>
-                <a href="https://steamcommunity.com/tradeoffer/new/?partner=184587454&token=SRVp_VYK" id='donate' target="_new" class='btn btn-donate btn-wide'>Donate</a>
+
+            <div class="form-line">
+                <p class="help">Download <i>(Browser Only)</i></p>
+                <a id="download" class="btn btn-success btn-wide">Download</a>
             </div>
             <hr />
-            <div class='form-line'>
+
+            <div class="form-line">
+                <p class="donate">A lot of work was put into this, It's 100% free. If you really want to, You can Donate a skin or two as thanks!</p>
+                <a href="https://steamcommunity.com/tradeoffer/new/?partner=184587454&amp;token=SRVp_VYK" id="donate" target="_blank" class="btn btn-donate btn-wide">Donate</a>
+            </div>
+            <hr />
+
+            <div class="form-line">
                 <ul>
-                    <h4>Credit To</h4>
-                    <li><a target="_new" href='https://redd.it/3pwe3k'>Reddit</a> > Unfathomable support</li>
-                    <li><a target="_new" href='http://steamcommunity.com/id/wibble199'>Wibble199</a> > Adding rotatable text & Photoshopped the new images to support transparent backgrounds.</li>
-                    <li><a target="_new" href='https://www.reddit.com/user/MagicalZebra'>MagicalZebra</a> > Template for old images.</li>
-                    <li><a target="_new" href='https://www.reddit.com/user/MIndye'>MIndye</a> > "Blank" Image</li>
-                    <li><a target="_new" href='http://steamcommunity.com/id/CruelHero/'>CrueLy</a> > Comedy Images</li>
-                    <h4>A big thankyou to everyone who has donated and supported me in the making of this project :)</h4>
+                    <li><h4>Credit To</h4></li>
+                    <li><a target="_blank" href="https://redd.it/3pwe3k">Reddit</a> &gt; Unfathomable support</li>
+                    <li><a target="_blank" href="http://steamcommunity.com/id/wibble199/">Wibble199</a> &gt; Adding rotatable text &amp; Photoshopped the new images to support transparent backgrounds.</li>
+                    <li><a target="_blank" href="https://www.reddit.com/user/MagicalZebra">MagicalZebra</a> &gt; Template for old images.</li>
+                    <li><a target="_blank" href="https://www.reddit.com/user/MIndye">MIndye</a> &gt; "Blank" Image</li>
+                    <li><a target="_blank" href="http://steamcommunity.com/id/CruelHero/">CrueLy</a> &gt; Comedy Images</li>
+                    <li><a target="_blank" href="http://steamcommunity.com/id/clug/">clug</a> &gt; HTML5 compliancy, optimisation of JS, general bug fixes</li>
+                    <li><h4>A big thankyou to everyone who has donated and supported me in the making of this project :)</h4></li>
                 </ul>
             </div>
         </div>
     </div>
-    <div id='footer'>
-        © All rights reserved, <a href="http://steamcommunity.com/id/TryHardHusky/" target="_new">TryHardHusky</a>
+    <div id="footer">
+        &copy; All rights reserved, <a href="http://steamcommunity.com/id/TryHardHusky/" target="_blank">TryHardHusky</a>
     </div>
+
+    <script src="js/script.js"></script>
 </body>
-<script type="text/javascript" src="js/script.js"></script>
 </html>

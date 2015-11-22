@@ -20,7 +20,7 @@ html {
     padding: 0;
     width: 100%;
     margin-bottom: 2em;
-	background-image: url(https://raw.githubusercontent.com/TryHardHusky/csgo-sticker-signature-generator/gh-pages/images/bg.jpg);
+	background-image: url(../images/bg.jpg);
 	background-size: cover;
 }
 
@@ -128,7 +128,7 @@ li {
     width: 192px;
 }
 
-#changesticker,
+#changetype,
 #cologne-team,
 #dreamhack-team,
 #comedy-team,
@@ -145,7 +145,7 @@ li {
     border-color: white;
     border-color: white;
 }
-#changesticker {
+#changetype {
     border-color: white;
 }
 
