@@ -13,7 +13,7 @@ var fonts = ["Indie Flower", "Shadows Into Light", "Pacifico", "Dancing Script",
              "Dawning of a New Day", "League Script", "Ruthie",
              "Lovers Quarrel", "Mrs Saint Delafield", "Mrs Sheppards",
              "Meie Script", "Princess Sofia", "Caveat", "Iceland"];
-var nobg_url = location.origin + location.pathname + "images/nobg.png";
+var nobg_url = getApplicationPath() + "images/nobg.png";
 
 /* font preloading */
 WebFont.load({
@@ -66,6 +66,11 @@ var stickerImage = new Image();
 stickerImage.src = $teams[stickertype[stickerIndex]].val();
 var backgroundImage = new Image();
 backgroundImage.src = nobg_url;
+
+// If there is a filename in the path, remove it i.e. .../index.html
+function getApplicationPath() {
+    return (location.origin + location.pathname).replace(/[^\/]*$/, '');
+}
 
 /* main code */
 function drawImageToContext(img) {
