@@ -3,212 +3,233 @@
 <head>
     <meta charset="utf-8" />
     <title>CSGO sticker signature generator</title>
-	<link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
-	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
     <!-- SCRIPTS AND STYLES -->
     <link href="css/style.css" rel="stylesheet" />
     <link href="css/spectrum.css" rel="stylesheet" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
     <script src="js/spectrum.js"></script>
-	
+
 </head>
 
 <body>
-    <div id="head">
-        <h1>Dreamhack Signature Generator<span>v3.9</span></h1>
-    </div>
+<div id="head">
+    <h1>Dreamhack Signature Generator<span>v3.9</span></h1>
+</div>
 
-    <div id="wrapper">
-        <div id="canvas-wrap">
-            <input type="range" id="rotation" min="-180" max="180" value="0" step="1" title="Rotation" class="update-canvas" />
-            <!-- Top -->
-            <canvas id="canvas"></canvas>
-            <!-- Canvas -->
-            <input type="range" id="height" min="0.45" max="0.9" value="0.65" step="0.01" title="Y Axis" class="update-canvas" />
-            <!-- Right -->
-            <input type="range" id="width" min="0.2" max="0.8" value="0.5" step="0.01" title="X Axis" class="update-canvas" />
-            <!-- Left -->
-            <input type="range" id="fontsize" min="20" max="75" value="41.6" step="0.2" title="Font Size" class="update-canvas" />
-            <!-- Bottom -->
+<div id="wrapper">
+    <div id="canvas-wrap">
+        <input type="range" id="rotation" min="-180" max="180" value="0" step="1" title="Rotation" class="update-canvas" />
+        <!-- Top -->
+        <canvas id="canvas"></canvas>
+        <!-- Canvas -->
+        <input type="range" id="height" min="0.45" max="0.9" value="0.65" step="0.01" title="Y Axis" class="update-canvas" />
+        <!-- Right -->
+        <input type="range" id="width" min="0.2" max="0.8" value="0.5" step="0.01" title="X Axis" class="update-canvas" />
+        <!-- Left -->
+        <input type="range" id="fontsize" min="20" max="75" value="41.6" step="0.2" title="Font Size" class="update-canvas" />
+        <!-- Bottom -->
+    </div>
+    <div id="control">
+        <div class="form-line">
+            <button id="changetype" class="btn btn-default">Change type (dreamhack)</button>
+            <input type="file" id="custom-background" style="display: none" />
+            <button id="bgbutton" class="btn btn-success">Upload Background</button>
+            <button id="clearbg" class="btn btn-warning">Clear Background</button>
         </div>
-        <div id="control">
-            <div class="form-line">
-                <button id="changetype" class="btn btn-default">Change type (dreamhack)</button>
-                <input type="file" id="custom-background" style="display: none" />
-                <button id="bgbutton" class="btn btn-success">Upload Background</button>
-                <button id="clearbg" class="btn btn-warning">Clear Background</button>
-            </div>
 
-            <div class="form-line">
-                <p class="help">Name</p>
-                <input id="name" type="text" value="Rambo" class="update-canvas" />
-            </div>
+        <div class="form-line">
+            <p class="help">Name</p>
+            <input id="name" type="text" value="Rambo" class="update-canvas" />
+        </div>
 
-            <div class="form-line">
-                <p class="help">Team</p>
-                <select id="cologne-team" class="sticker-select">
-                    <option value="images/cologne15/blank.png">Blank</option>
-                    <option value="images/cologne15/clg.png">CLG</option>
-                    <option value="images/cologne15/cloud9.png">Cloud9</option>
-                    <option value="images/cologne15/envyus.png">EnVyUs</option>
-                    <option value="images/cologne15/flipsid3.png">Flipsid3</option>
-                    <option value="images/cologne15/fnatic.png">Fnatic</option>
-                    <option value="images/cologne15/kinguin.png">G2</option>
-                    <option value="images/cologne15/ibuypower.png">iBuyPower</option>
-                    <option value="images/cologne15/Immunity.png">Immunity</option>
-                    <option value="images/cologne15/lgb-sports.png">LGB eSports</option>
-                    <option value="images/cologne15/luminosity-gaming.png">Luminosity Gaming</option>
-                    <option value="images/cologne15/mousesports.png">Mousesports</option>
-                    <option value="images/cologne15/navi.png">Na'Vi</option>
-                    <option value="images/cologne15/nip.png">NiP</option>
-                    <option value="images/cologne15/e-bettle.png">Team eBettle</option>
-                    <option value="images/cologne15/renegades.png">Team Renegades</option>
-                    <option value="images/cologne15/titan.png">Titan</option>
-                    <option value="images/cologne15/solomid.png">TSM</option>
-                    <option value="images/cologne15/virtuspro.png">Virtus.Pro</option>
-                </select>
-                
-                <select id="custom-team" class="sticker-select">
-                    <option value="images/custom/teamyp.png">Teamyp</option>
-                </select>
-                
-                <select id="comedy-team" class="sticker-select">
-                    <option value="images/comedy/cheetos.png">Cheetos</option>
-                    <option value="images/comedy/chipotle.png">Chipotle</option>
-                    <option value="images/comedy/doritos.png">Doritos</option>
-                    <option value="images/comedy/illuminati.png">Illuminati</option>
-                    <option value="images/comedy/kfc.png">KFC</option>
-                    <option value="images/comedy/mcdonalds.png">McDonalds</option>
-                    <option value="images/comedy/mlg.png">MLG</option>
-                    <option value="images/comedy/mtn-dew.png">MTN Dew</option>
-                    <option value="images/comedy/pornhub.png">Pornhub</option>
-                    <option value="images/comedy/subway.png">Subway</option>
-                    <option value="images/comedy/tacobell.png">Tacobell</option>
-                </select>
+        <div class="form-line">
+            <p class="help">Team</p>
 
-                <select id="dreamhack-team" class="sticker-select">
-                    <option value="images/dreamhack15/3dmax.png">3DMax</option>
-                    <option value="images/dreamhack15/astana-dragons.png">Astana Dragons</option>
-                    <option value="images/dreamhack15/blank.png">Blank</option>
-                    <option value="images/dreamhack15/bravado.png">Bravado</option>
-                    <option value="images/dreamhack15/clan-mystik.png">Clan Mystik</option>
-                    <option value="images/dreamhack15/cloud9.png">Cloud9</option>
-                    <option value="images/dreamhack15/complexity.png">Complexity</option>
-                    <option value="images/dreamhack15/copenhagen-wolves.png">Copenhagen Wolves</option>
-                    <option value="images/dreamhack15/counter-logic-gaming.png">Counter Logic Gaming</option>
-                    <option value="images/dreamhack15/dat-team.png">DAT Team</option>
-                    <option value="images/dreamhack15/dignitas.png">Dignitas</option>
-                    <option value="images/dreamhack15/dynamics.png">Dynamics</option>
-                    <option value="images/dreamhack15/ebettle.png">E Bettle</option>
-                    <option value="images/dreamhack15/envyus.png">EnvyUs</option>
-                    <option value="images/dreamhack15/epsilon.png">Epsilon</option>
-                    <option value="images/dreamhack15/flipsid3.png">Flipsid3</option>
-                    <option value="images/dreamhack15/fnatic.png">Fnatic</option>
-                    <option value="images/dreamhack15/g2.png">G2</option>
-                    <option value="images/dreamhack15/hellraisers.png">Hellraisers</option>
-                    <option value="images/dreamhack15/ibuypower.png">iBuyPower</option>
-                    <option value="images/dreamhack15/keyd-stars.png">Keyd Stars</option>
-                    <option value="images/dreamhack15/kinguin.png">Kinguin</option>
-                    <option value="images/dreamhack15/ldlc.png">LDLC</option>
-                    <option value="images/dreamhack15/lg.png">LG</option>
-                    <option value="images/dreamhack15/lgb.png">LGB eSports</option>
-                    <option value="images/dreamhack15/london-conspiracy.png">London Conspiracy</option>
-                    <option value="images/dreamhack15/mousesports.png">Mousesports</option>
-                    <option value="images/dreamhack15/myxmg.png">MyXMG</option>
-                    <option value="images/dreamhack15/navi.png">Na'Vi</option>
-                    <option value="images/dreamhack15/nip.png">NiP</option>
-                    <option value="images/dreamhack15/penta.png">Penta</option>
-                    <option value="images/dreamhack15/reason.png">Reason</option>
-                    <option value="images/dreamhack15/renegades.png">Renegades</option>
-                    <option value="images/dreamhack15/immunity.png">Team Immunity</option>
-                    <option value="images/dreamhack15/team-liquid.png">Team Liquid</option>
-                    <option value="images/dreamhack15/team-wolf.png">Team Wolf</option>
-                    <option value="images/dreamhack15/titan.png">Titan</option>
-                    <option value="images/dreamhack15/solomid.png">TSM</option>
-                    <option value="images/dreamhack15/very-games.png">Very Games</option>
-                    <option value="images/dreamhack15/vexed.png">Vexed</option>
-                    <option value="images/dreamhack15/virtuspro.png">Virtus.Pro</option>
-                </select>
-            </div>
+            <select id="columbus-team" class="sticker-select">
+                <option value="images/columbus16/blank.png">Blank</option>
+                <option value="images/columbus16/cloud-9.png">Cloud 9</option>
+                <option value="images/columbus16/counter-logic-gaming.png">Counter Logic Gaming</option>
+                <option value="images/columbus16/envyus.png">EnVyUs</option>
+                <option value="images/columbus16/faze.png">Faze</option>
+                <option value="images/columbus16/flipsid3.png">flipsid3</option>
+                <option value="images/columbus16/fnatic.png">Fnatic</option>
+                <option value="images/columbus16/g2.png">G2</option>
+                <option value="images/columbus16/gambit.png">Gambit</option>
+                <option value="images/columbus16/lg.png">LG</option>
+                <option value="images/columbus16/liquid.png">Liquid</option>
+                <option value="images/columbus16/mouse.png">Mousesports</option>
+                <option value="images/columbus16/navi.png">NaVi</option>
+                <option value="images/columbus16/nip.png">NiP</option>
+                <option value="images/columbus16/splyce.png">Splyce</option>
+                <option value="images/columbus16/virtuspro.png">Virtus.Pro</option>
+            </select>
 
-            <p class="help">Font</p>
-            <div class="form-line">
-                <select id="font" class="update-canvas">
-                    <option value="Indie Flower">Indie Flower</option>
-                    <option value="Shadows Into Light">Shadows Into Light</option>
-                    <option value="Pacifico">Pacifico</option>
-                    <option value="Dancing Script">Dancing Script</option>
-                    <option value="Shadows Into Light Two">Shadows Into Light Two</option>
-                    <option value="Coming Soon">Coming Soon</option>
-                    <option value="Handlee">Handlee</option>
-                    <option value="Cookie">Cookie</option>
-                    <option value="Tangerine">Tangerine</option>
-                    <option value="Great Vibes">Great Vibes</option>
-                    <option value="Damion">Damion</option>
-                    <option value="Patrick Hand">Patrick Hand</option>
-                    <option value="Bad Script">Bad Script</option>
-                    <option value="Calligraffitti">Calligraffitti</option>
-                    <option value="Waiting for the Sunrise">Waiting for the Sunrise</option>
-                    <option value="Reenie Beanie">Reenie Beanie</option>
-                    <option value="Nothing You Could Do">Nothing You Could Do</option>
-                    <option value="Sacramento">Sacramento</option>
-                    <option value="Crafty Girls">Crafty Girls</option>
-                    <option value="Allura">Allura</option>
-                    <option value="Kalam">Kalam</option>
-                    <option value="Yellowtail">Yellowtail</option>
-                    <option value="Italianno">Italianno</option>
-                    <option value="Give You Glory">Give You Glory</option>
-                    <option value="Dawning of a New Day">Dawning of a New Day</option>
-                    <option value="League Script">League Script</option>
-                    <option value="Ruthie">Ruthie</option>
-                    <option value="Lovers Quarrel">Lovers Quarrel</option>
-                    <option value="Mrs Saint Delafield">Mrs Saint Delafield</option>
-                    <option value="Mrs Sheppards">Mrs Sheppards</option>
-                    <option value="Meie Script">Meie Script</option>
-                    <option value="Princess Sofia">Princess Sofia</option>
-                    <option value="Caveat">Caveat</option>
-                    <option value="Comic Sans MS">Comic Sans</option>
-                </select>
-            </div>
+            <select id="cologne-team" class="sticker-select">
+                <option value="images/cologne15/blank.png">Blank</option>
+                <option value="images/cologne15/clg.png">CLG</option>
+                <option value="images/cologne15/cloud9.png">Cloud9</option>
+                <option value="images/cologne15/envyus.png">EnVyUs</option>
+                <option value="images/cologne15/flipsid3.png">Flipsid3</option>
+                <option value="images/cologne15/fnatic.png">Fnatic</option>
+                <option value="images/cologne15/kinguin.png">G2</option>
+                <option value="images/cologne15/ibuypower.png">iBuyPower</option>
+                <option value="images/cologne15/Immunity.png">Immunity</option>
+                <option value="images/cologne15/lgb-sports.png">LGB eSports</option>
+                <option value="images/cologne15/luminosity-gaming.png">Luminosity Gaming</option>
+                <option value="images/cologne15/mousesports.png">Mousesports</option>
+                <option value="images/cologne15/navi.png">Na'Vi</option>
+                <option value="images/cologne15/nip.png">NiP</option>
+                <option value="images/cologne15/e-bettle.png">Team eBettle</option>
+                <option value="images/cologne15/renegades.png">Team Renegades</option>
+                <option value="images/cologne15/titan.png">Titan</option>
+                <option value="images/cologne15/solomid.png">TSM</option>
+                <option value="images/cologne15/virtuspro.png">Virtus.Pro</option>
+            </select>
 
-            <div class="form-line">
-                <p class="help">Color</p>
-                <input type="text" id="color-pick" value="" />
-                <input type="text" id="color" disabled value="#FFFFFF" />
-                <button id="random" class="btn btn-default btn-join">Random</button>
-            </div>
+            <select id="custom-team" class="sticker-select">
+                <option value="images/custom/teamyp.png">Teamyp</option>
+            </select>
 
-            <div class="form-line">
-                <p class="help">Download <i>(Browser Only)</i></p>
-                <a id="download" class="btn btn-success btn-wide">Download</a>
-            </div>
-            <hr />
+            <select id="comedy-team" class="sticker-select">
+                <option value="images/comedy/cheetos.png">Cheetos</option>
+                <option value="images/comedy/chipotle.png">Chipotle</option>
+                <option value="images/comedy/doritos.png">Doritos</option>
+                <option value="images/comedy/illuminati.png">Illuminati</option>
+                <option value="images/comedy/kfc.png">KFC</option>
+                <option value="images/comedy/mcdonalds.png">McDonalds</option>
+                <option value="images/comedy/mlg.png">MLG</option>
+                <option value="images/comedy/mtn-dew.png">MTN Dew</option>
+                <option value="images/comedy/pornhub.png">Pornhub</option>
+                <option value="images/comedy/subway.png">Subway</option>
+                <option value="images/comedy/tacobell.png">Tacobell</option>
+            </select>
 
-            <div class="form-line">
-                <p class="donate">A lot of work was put into this, It's 100% free. If you really want to, You can Donate a skin or two as thanks!</p>
-                <a href="https://steamcommunity.com/tradeoffer/new/?partner=184587454&amp;token=SRVp_VYK" id="donate" target="_blank" class="btn btn-donate btn-wide">Donate</a>
-            </div>
-            <hr />
+            <select id="dreamhack-team" class="sticker-select">
+                <option value="images/dreamhack15/3dmax.png">3DMax</option>
+                <option value="images/dreamhack15/astana-dragons.png">Astana Dragons</option>
+                <option value="images/dreamhack15/blank.png">Blank</option>
+                <option value="images/dreamhack15/bravado.png">Bravado</option>
+                <option value="images/dreamhack15/clan-mystik.png">Clan Mystik</option>
+                <option value="images/dreamhack15/cloud9.png">Cloud9</option>
+                <option value="images/dreamhack15/complexity.png">Complexity</option>
+                <option value="images/dreamhack15/copenhagen-wolves.png">Copenhagen Wolves</option>
+                <option value="images/dreamhack15/counter-logic-gaming.png">Counter Logic Gaming</option>
+                <option value="images/dreamhack15/dat-team.png">DAT Team</option>
+                <option value="images/dreamhack15/dignitas.png">Dignitas</option>
+                <option value="images/dreamhack15/dynamics.png">Dynamics</option>
+                <option value="images/dreamhack15/ebettle.png">E Bettle</option>
+                <option value="images/dreamhack15/envyus.png">EnvyUs</option>
+                <option value="images/dreamhack15/epsilon.png">Epsilon</option>
+                <option value="images/dreamhack15/flipsid3.png">Flipsid3</option>
+                <option value="images/dreamhack15/fnatic.png">Fnatic</option>
+                <option value="images/dreamhack15/g2.png">G2</option>
+                <option value="images/dreamhack15/hellraisers.png">Hellraisers</option>
+                <option value="images/dreamhack15/ibuypower.png">iBuyPower</option>
+                <option value="images/dreamhack15/keyd-stars.png">Keyd Stars</option>
+                <option value="images/dreamhack15/kinguin.png">Kinguin</option>
+                <option value="images/dreamhack15/ldlc.png">LDLC</option>
+                <option value="images/dreamhack15/lg.png">LG</option>
+                <option value="images/dreamhack15/lgb.png">LGB eSports</option>
+                <option value="images/dreamhack15/london-conspiracy.png">London Conspiracy</option>
+                <option value="images/dreamhack15/mousesports.png">Mousesports</option>
+                <option value="images/dreamhack15/myxmg.png">MyXMG</option>
+                <option value="images/dreamhack15/navi.png">Na'Vi</option>
+                <option value="images/dreamhack15/nip.png">NiP</option>
+                <option value="images/dreamhack15/penta.png">Penta</option>
+                <option value="images/dreamhack15/reason.png">Reason</option>
+                <option value="images/dreamhack15/renegades.png">Renegades</option>
+                <option value="images/dreamhack15/immunity.png">Team Immunity</option>
+                <option value="images/dreamhack15/team-liquid.png">Team Liquid</option>
+                <option value="images/dreamhack15/team-wolf.png">Team Wolf</option>
+                <option value="images/dreamhack15/titan.png">Titan</option>
+                <option value="images/dreamhack15/solomid.png">TSM</option>
+                <option value="images/dreamhack15/very-games.png">Very Games</option>
+                <option value="images/dreamhack15/vexed.png">Vexed</option>
+                <option value="images/dreamhack15/virtuspro.png">Virtus.Pro</option>
+            </select>
+        </div>
 
-            <div class="form-line">
-                <ul>
-                    <li><h4>Credit To</h4></li>
-                    <li><a target="_blank" href="https://redd.it/3pwe3k">Reddit</a> &gt; Unfathomable support</li>
-                    <li><a target="_blank" href="http://steamcommunity.com/id/wibble199/">Wibble199</a> &gt; Adding rotatable text &amp; Photoshopped the new images to support transparent backgrounds.</li>
-                    <li><a target="_blank" href="https://www.reddit.com/user/MagicalZebra">MagicalZebra</a> &gt; Template for old images.</li>
-                    <li><a target="_blank" href="https://www.reddit.com/user/MIndye">MIndye</a> &gt; "Blank" Image</li>
-                    <li><a target="_blank" href="https://steamcommunity.com/profiles/76561198082596568">CrueLy</a> &gt; Comedy Images</li>
-                    <li><a target="_blank" href="http://steamcommunity.com/id/clug/">clug</a> &gt; HTML5 compliancy, optimisation of JS, general bug fixes</li>
-                    <li><h4>A big thankyou to everyone who has donated and supported me in the making of this project :)</h4></li>
-                </ul>
-            </div>
+        <p class="help">Font</p>
+        <div class="form-line">
+            <select id="font" class="update-canvas">
+                <option value="Indie Flower">Indie Flower</option>
+                <option value="Shadows Into Light">Shadows Into Light</option>
+                <option value="Pacifico">Pacifico</option>
+                <option value="Dancing Script">Dancing Script</option>
+                <option value="Shadows Into Light Two">Shadows Into Light Two</option>
+                <option value="Coming Soon">Coming Soon</option>
+                <option value="Handlee">Handlee</option>
+                <option value="Cookie">Cookie</option>
+                <option value="Tangerine">Tangerine</option>
+                <option value="Great Vibes">Great Vibes</option>
+                <option value="Damion">Damion</option>
+                <option value="Patrick Hand">Patrick Hand</option>
+                <option value="Bad Script">Bad Script</option>
+                <option value="Calligraffitti">Calligraffitti</option>
+                <option value="Waiting for the Sunrise">Waiting for the Sunrise</option>
+                <option value="Reenie Beanie">Reenie Beanie</option>
+                <option value="Nothing You Could Do">Nothing You Could Do</option>
+                <option value="Sacramento">Sacramento</option>
+                <option value="Crafty Girls">Crafty Girls</option>
+                <option value="Allura">Allura</option>
+                <option value="Kalam">Kalam</option>
+                <option value="Yellowtail">Yellowtail</option>
+                <option value="Italianno">Italianno</option>
+                <option value="Give You Glory">Give You Glory</option>
+                <option value="Dawning of a New Day">Dawning of a New Day</option>
+                <option value="League Script">League Script</option>
+                <option value="Ruthie">Ruthie</option>
+                <option value="Lovers Quarrel">Lovers Quarrel</option>
+                <option value="Mrs Saint Delafield">Mrs Saint Delafield</option>
+                <option value="Mrs Sheppards">Mrs Sheppards</option>
+                <option value="Meie Script">Meie Script</option>
+                <option value="Princess Sofia">Princess Sofia</option>
+                <option value="Caveat">Caveat</option>
+                <option value="Comic Sans MS">Comic Sans</option>
+            </select>
+        </div>
+
+        <div class="form-line">
+            <p class="help">Color</p>
+            <input type="text" id="color-pick" value="" />
+            <input type="text" id="color" disabled value="#FFFFFF" />
+            <button id="random" class="btn btn-default btn-join">Random</button>
+        </div>
+
+        <div class="form-line">
+            <p class="help">Download <i>(Browser Only)</i></p>
+            <a id="download" class="btn btn-success btn-wide">Download</a>
+        </div>
+        <hr />
+
+        <div class="form-line">
+            <p class="donate">A lot of work was put into this, It's 100% free. If you really want to, You can Donate a skin or two as thanks!</p>
+            <a href="https://steamcommunity.com/tradeoffer/new/?partner=184587454&amp;token=SRVp_VYK" id="donate" target="_blank" class="btn btn-donate btn-wide">Donate</a>
+        </div>
+        <hr />
+
+        <div class="form-line">
+            <ul>
+                <li><h4>Credit To</h4></li>
+                <li><a target="_blank" href="https://redd.it/3pwe3k">Reddit</a> &gt; Unfathomable support</li>
+                <li><a target="_blank" href="http://steamcommunity.com/id/wibble199/">Wibble199</a> &gt; Adding rotatable text &amp; Photoshopped the new images to support transparent backgrounds.</li>
+                <li><a target="_blank" href="https://www.reddit.com/user/MagicalZebra">MagicalZebra</a> &gt; Template for old images.</li>
+                <li><a target="_blank" href="https://www.reddit.com/user/MIndye">MIndye</a> &gt; "Blank" Image</li>
+                <li><a target="_blank" href="https://steamcommunity.com/profiles/76561198082596568">CrueLy</a> &gt; Comedy Images</li>
+                <li><a target="_blank" href="http://steamcommunity.com/id/clug/">clug</a> &gt; HTML5 compliancy, optimisation of JS, general bug fixes</li>
+                <li><a target="_blank" href="http://steamcommunity.com/profiles/76561198175421871/">IoN</a> &gt; MLG Columbus Teams</li>
+                <li><h4>A big thankyou to everyone who has donated and supported me in the making of this project :)</h4></li>
+            </ul>
         </div>
     </div>
-    <div id="footer">
-        &copy; All rights reserved, <a href="http://steamcommunity.com/id/TryHardHusky/" target="_blank">TryHardHusky</a>
-    </div>
+</div>
+<div id="footer">
+    &copy; All rights reserved, <a href="http://steamcommunity.com/id/TryHardHusky/" target="_blank">TryHardHusky</a>
+</div>
 
-    <script src="js/script.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
