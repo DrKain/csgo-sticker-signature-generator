@@ -2,17 +2,17 @@
 var is_ie = !!navigator.userAgent.match(/(?:MSIE |Trident\/.*; rv:)(\d+)/);
 
 /* data */
-var stickertype = ['dreamhack','cologne','comedy','custom'];
+var stickertype = ['columbus', 'dreamhack','cologne','comedy','custom'];
 var stickerIndex = 0;
 var fonts = ["Indie Flower", "Shadows Into Light", "Pacifico", "Dancing Script",
-             "Shadows Into Light Two", "Coming Soon", "Handlee", "Cookie",
-             "Tangerine", "Great Vibes", "Damion", "Patrick Hand", "Bad Script",
-             "Calligraffitti", "Waiting for the Sunrise", "Reenie Beanie",
-             "Nothing You Could Do", "Sacramento", "Crafty Girls", "Allura",
-             "Kalam", "Yellowtail", "Italianno", "Give You Glory",
-             "Dawning of a New Day", "League Script", "Ruthie",
-             "Lovers Quarrel", "Mrs Saint Delafield", "Mrs Sheppards",
-             "Meie Script", "Princess Sofia", "Caveat", "Iceland"];
+    "Shadows Into Light Two", "Coming Soon", "Handlee", "Cookie",
+    "Tangerine", "Great Vibes", "Damion", "Patrick Hand", "Bad Script",
+    "Calligraffitti", "Waiting for the Sunrise", "Reenie Beanie",
+    "Nothing You Could Do", "Sacramento", "Crafty Girls", "Allura",
+    "Kalam", "Yellowtail", "Italianno", "Give You Glory",
+    "Dawning of a New Day", "League Script", "Ruthie",
+    "Lovers Quarrel", "Mrs Saint Delafield", "Mrs Sheppards",
+    "Meie Script", "Princess Sofia", "Caveat", "Iceland"];
 var nobg_url = getApplicationPath() + "images/nobg.png";
 
 /* font preloading */
