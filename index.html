@@ -34,7 +34,6 @@
     </div>
     <div id="control">
         <div class="form-line">
-            <button id="changetype" class="btn btn-default">Change type (columbus)</button>
             <input type="file" id="custom-background" style="display: none" />
             <button id="bgbutton" class="btn btn-success">Upload Background</button>
             <button id="clearbg" class="btn btn-warning">Clear Background</button>
@@ -46,8 +45,16 @@
         </div>
 
         <div class="form-line">
-            <p class="help">Team</p>
+            <p class="help">Event</p>
+            <select id="changetype">
+                <option value="0">Columbus 2016</option>
+                <option value="1">Dreamhack 2015</option>
+                <option value="2">Cologne 2015</option>
+                <option value="3">Comedy</option>
+                <option value="4">Custom</option>
+            </select>
 
+            <p class="help">Team</p>
             <select id="columbus-team" class="sticker-select">
                 <option value="images/columbus16/blank.png">Blank</option>
                 <option value="images/columbus16/cloud-9.png">Cloud 9</option>

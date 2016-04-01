@@ -153,9 +153,8 @@ $sticker_select.on("change", function(e) {
     stickerImage.onload = updateCanvas;
 });
 
-$changetype.on("click", function(e) {
-    stickerIndex = (stickerIndex + 1) % stickertype.length;
-    $changetype.text("Change type (" + stickertype[stickerIndex] + ")");
+$changetype.on("change", function(e) {
+    stickerIndex = $changetype.val();
 
     for (var i = 0; i < stickertype.length; i++) {
         if (i != stickerIndex) {
