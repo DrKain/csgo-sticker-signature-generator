@@ -100,14 +100,21 @@ li {
 #wrapper {
     margin: auto;
     text-align: center;
-    display: flex;
-    justify-content: center;
+    width: 900px;
+    background-color: #FFF;
+}
+
+#wrapper::after {
+    content: '';
+    display: block;
+    clear: both;
 }
 
 #wrapper>div {
     position: relative;
-    background-color: #FFF;
-    width: 288px;
+    float: left;
+    width: 33.3333%;
+    box-sizing: border-box;
     padding: 10px 5px;
 }
 /* MISC */
