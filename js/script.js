@@ -126,14 +126,9 @@ $custom_background.on("change", function(e) {
     if ((file = this.files[0])) {
         var img = new Image();
         img.onload = function() {
-            if (this.width > 288 || this.height > 288){
-                $clearbg.click();
-                alert("File too big! Max size: 288x288");
-            } else {
-                backgroundImage.src = (window.URL || window.webkitURL).createObjectURL(file);
-                $clearbg.show();
-                $bgbutton.hide();
-            }
+            backgroundImage.src = (window.URL || window.webkitURL).createObjectURL(file);
+            $clearbg.show();
+            $bgbutton.hide();
             backgroundImage.onload = updateCanvas;
         };
         img.src = (window.URL || window.webkitURL).createObjectURL(file);
@@ -153,9 +148,8 @@ $sticker_select.on("change", function(e) {
     stickerImage.onload = updateCanvas;
 });
 
-$changetype.on("click", function(e) {
-    stickerIndex = (stickerIndex + 1) % stickertype.length;
-    $changetype.text("Change type (" + stickertype[stickerIndex] + ")");
+$changetype.on("change", function(e) {
+    stickerIndex = $changetype.val();
 
     for (var i = 0; i < stickertype.length; i++) {
         if (i != stickerIndex) {

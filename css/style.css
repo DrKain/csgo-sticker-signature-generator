@@ -98,12 +98,24 @@ li {
 /* WRAPS */
 
 #wrapper {
-    position: relative;
     margin: auto;
-    width: 288px;
     text-align: center;
-    background-color: white;
-    padding-bottom: 1.7em;
+    width: 900px;
+    background-color: #FFF;
+}
+
+#wrapper::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+#wrapper>div {
+    position: relative;
+    float: left;
+    width: 33.3333%;
+    box-sizing: border-box;
+    padding: 10px 5px;
 }
 /* MISC */
 
@@ -146,9 +158,6 @@ li {
     border-color: white;
     border-color: white;
 }
-#changetype {
-    border-color: white;
-}
 
 .sp-replacer {
     margin-right: -4px;
@@ -183,7 +192,7 @@ li {
     width: 230px;
 }
 
-#control {
+.control {
     display: inline-block;
 }
 
