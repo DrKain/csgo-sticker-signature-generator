@@ -98,12 +98,17 @@ li {
 /* WRAPS */
 
 #wrapper {
-    position: relative;
     margin: auto;
-    width: 288px;
     text-align: center;
-    background-color: white;
-    padding-bottom: 1.7em;
+    display: flex;
+    justify-content: center;
+}
+
+#wrapper>div {
+    position: relative;
+    background-color: #FFF;
+    width: 288px;
+    padding: 10px 5px;
 }
 /* MISC */
 
