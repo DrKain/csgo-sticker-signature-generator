@@ -126,14 +126,9 @@ $custom_background.on("change", function(e) {
     if ((file = this.files[0])) {
         var img = new Image();
         img.onload = function() {
-            if (this.width > 288 || this.height > 288){
-                $clearbg.click();
-                alert("File too big! Max size: 288x288");
-            } else {
-                backgroundImage.src = (window.URL || window.webkitURL).createObjectURL(file);
-                $clearbg.show();
-                $bgbutton.hide();
-            }
+            backgroundImage.src = (window.URL || window.webkitURL).createObjectURL(file);
+            $clearbg.show();
+            $bgbutton.hide();
             backgroundImage.onload = updateCanvas;
         };
         img.src = (window.URL || window.webkitURL).createObjectURL(file);
