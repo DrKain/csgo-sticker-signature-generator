@@ -169,3 +169,24 @@ $download.on("click", function(e) {
 
 /* initial call to draw canvas on page load */
 setTimeout(updateCanvas, 100);
+
+
+
+/* banner */
+$(document).ready(function() {
+  var banners = $(".banner a");
+  var index = 0;
+  setInterval(function() {
+    new TimelineLite()
+      .to(banners.get(index), .75, {
+        rotationX: 180,
+        autoAlpha: 0
+      })
+      .to(banners.get(index === banners.length - 1 ? 0 : index + 1), .75, {
+        rotationX: 0,
+        autoAlpha: 1
+      }, 0);
+
+    index = index === banners.length - 1 ? 0 : index + 1;
+  }, 4000);
+});
