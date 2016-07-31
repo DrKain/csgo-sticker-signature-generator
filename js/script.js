@@ -172,7 +172,7 @@ setTimeout(updateCanvas, 100);
 
 
 
-/* banner */
+/* banner 
 $(document).ready(function() {
   var banners = $(".banner a");
   var index = 0;
@@ -189,7 +189,7 @@ $(document).ready(function() {
 
     index = index === banners.length - 1 ? 0 : index + 1;
   }, 4000);
-});
+});*/
 
 /* Analytics */		
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){		
