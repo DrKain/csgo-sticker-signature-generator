@@ -37,7 +37,7 @@ h1 {
     padding: 0;
     color: #333;
     text-indent: -999999px;
-    background-image: url('/sig_logo.png');
+    background-image: url('../sig_logo.png');
     width: 584px;
     height: 160px;
 }
@@ -229,7 +229,7 @@ a:active {
 }
 
 #background {
-    background: url(/background.png) no-repeat center center fixed;
+    background: url(../background.png) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
