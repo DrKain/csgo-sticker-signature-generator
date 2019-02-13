@@ -2,4 +2,4 @@
 
 [Access the generator here](https://tryhardhusky.github.io/csgo-sticker-signature-generator/)  
   
-![1](http://i.imgur.com/tauslP6.gif)
+![1](https://i.imgur.com/tauslP6.gif)
