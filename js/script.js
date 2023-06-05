@@ -24,21 +24,7 @@ Generator.credits = {
 };
 
 Generator.eventNames = {
-    "boston18"              : "Boston 2018",
-    "boston18 (illustrated)": "Boston 2018 (Illustrated)",
-    "krakow17 (gold)"       : "Krakow 2017 (Gold)",
-    "krakow17"              : "Krakow 2017",
-    "krakow17 (foil)"       : "Krakow 2017 (Foil)",
-    "atlanta17 (foil)"      : "Atlanta 2017 (Foil)",
-    "columbus16"            : "Columbus 2016",
-    "columbus16 (foil)"     : "Columbus 2016 (Foil)",
-    "cologne16"             : "Cologne 2016",
-    "cologne16 (foil)"      : "Cologne 2016 (Foil)",
-    "cologne15"             : "Cologne 2015",
-    "comedy15"              : "Comedy 2015",
-    "dreamhack15"           : "Dreamhack 2015",
-    "dreamhack15 (old)"     : "Dreamhack 2015 (old)",
-    "krakow17 (comedy)"     : "Krakow 2017 (Comedy)"
+    "csc_season11"              : "CSC Season 11"
 };
 
 Generator.backgrounds = [
@@ -49,62 +35,8 @@ Generator.backgrounds = [
 ];
 
 Generator.events = {
-    "boston18" : [
-        "FaZe", "SK", "VirtusPro", "Fnatic", "Astralis", "Cloud9", "G2", "Liquid",
-        "Sprout", "NaVi", "EnVyUs", "100Thieves",
-        "Vega Squadron", "Space Soldiers", "Gambit",
-        "Misfits", "Renegades", "AVANGAR", "Flipsid3",
-        "North", "Mousesports", "BIG", "Flash",
-        "Quantum Bellator Fire", "Tyloo"
-    ],
-    "boston18 (illustrated)" : [
-        "100Thieves", "Astralis", "BIG", "Cloud9", "EnVyUs", "FaZe", "Flash", "Flipsid3",
-        "Fnatic", "Gambit", "Liquid", "Misfits", "Mousesports", "NaVi", "North", "Quantum Bellator Fire", "Renegades",
-        "SK", "Space Soldiers", "Sprout", "Vega Squadron", "VirtusPro"
-    ],
-    "krakow17": [
-        "Astralis", "BIG", "Cloud9", "FaZe", "Flipsid3", "Fnatic", "G2", "Gambit", "Immortals", "Mousesports", "NaVi",
-        "Vega Squadron", "VirtusPro", "SK", "Penta", "North"
-    ],
-    "krakow17 (foil)": [
-        "Cloud9", "Immortals", "FaZe"
-    ],
-    "krakow17 (gold)": [
-        "FaZe", "Fnatic", "BIG (With HS)", "SK"
-    ],
-    "krakow17 (comedy)" : [
-        "KFC"
-    ],
-    "atlanta17 (foil)": [
-        "FaZe", "Fnatic", "G2", "Gambit", "GODSENT", "HellRaisers", "Liquid", "Mousesports", "NaVi", "North",
-        "OpTic", "SK", "Flipsid3", "Astralis", "VirtusPro", "EnVyUs"
-    ],
-    "cologne16 (foil)" : [
-        "Flipsid3", "SK", "Fnatic"
-    ],
-    "columbus16": [
-        "Astralis", "CLG", "Cloud9", "EnVyUs", "FaZe", "Flipsid3", "Fnatic", "G2", "Gambit", "LG", "Liquid", "Mousesports",
-        "NaVi", "Ninjas In Pyjamas", "Splyce", "VirtusPro"
-    ],
-    "columbus16 (foil)": [
-        "CLG", "EnVyUs", "FaZe", "Flipsid3", "Fnatic", "G2", "Gambit", "Liquid", "Ninjas In Pyjamas", "Splyce"
-    ],
-    "cologne15": [
-        "VirtusPro", "TSM", "Titan", "Renegades", "E Bettle", "NiP", "NaVi", "Mousesports", "Luminosity Gaming",
-        "LGB eSports", "Immunity", "iBuyPower", "Kinguin", "Fnatic", "Flipsid3", "EnVyUs", "Cloud9", "CLG", "Blank"
-    ],
-    "comedy15": [
-        "Tacobell", "Subway", "Pornhub", "MTN Dew", "MLG", "McDonalds", "KFC", "Illuminati", "Doritos", "Chipotle", "Cheetos"
-    ],
-    "dreamhack15": [
-        "Team SoloMid", "Team SoloMid (old)", "VirtusPro", "Vexed", "Titan", "Liquid", "Ninjas In Pyjamas", "NaVi",
-        "Mousesports", "LG", "G2", "Flipsid3", "EnvyUs", "Dignitas", "Cloud9", "CLG"
-    ],
-    "dreamhack15 (old)": [
-        "Very Games", "Team Wolf", "Immunity", "Renegades", "Reason", "Penta", "MyXMG", "London Conspiracy",
-        "LGB eSports", "LDLC", "Kinguin", "Keyd Stars", "iBuyPower", "Hellraisers", "Fnatic", "Epsilon",
-        "eBettle", "Dynamics", "DAT Team", "Counter Logic Gaming", "Copenhagen Wolves", "Complexity",
-        "Clan Mystik", "Bravado", "Blank", "Astana Dragons", "3DMax", "Team YP"
+    "csc_season11" : [
+        "AP"
     ]
 };
 
