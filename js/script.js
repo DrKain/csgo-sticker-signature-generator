@@ -57,7 +57,7 @@ Generator.lastEvent         = null;
 Generator.downloadName      = "csgo_signature.png";
 Generator.labelColor        = "#FFFFFF";
 Generator.labelText         = '';
-Generator.backgroundSource  = '/csgo-sticker-signature-generator/bg.png';
+Generator.backgroundSource  = 'bg.png';
 Generator.textStyle         = 'false';
 
 Generator.defaultBG         = Generator.backgroundSource;
