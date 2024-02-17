@@ -5,13 +5,13 @@
 
 ### Links
 
-- [Website](https://tryhardhusky.github.io/csgo-sticker-signature-generator/)
+- [Website](https://drkain.github.io/csgo-sticker-signature-generator/)
 - [Source Code](https://github.com/DrKain/csgo-sticker-signature-generator)  
 
 
 ### Contact Info  
 
-- Discord: Kain#6880  
+- Discord: drkain  
 - Email (found on my [profile](https://github.com/DrKain) for logged-in users).
 
 ### Preview
